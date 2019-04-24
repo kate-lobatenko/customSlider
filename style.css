@@ -1,3 +1,10 @@
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     background: #E5E5E5;
     color: #111;
@@ -15,6 +22,9 @@ h1 {
     max-width: 1440px;
     margin-right: auto;
     margin-left: auto;
+    height: 100%;
+    margin-top: 10vh;
+    position: relative;
 }
 
 .slider {
@@ -63,13 +73,50 @@ h1 {
     overflow: hidden;
 }
 
+.skewed_bg:before,
 .skewed_bg:after {
     content: "";
     position: absolute;
     display: block;
-    background: #00B285;
-    padding: 200px 0;
-    -webkit-transform: skew(0deg, -10deg);
-    transform: skew(0deg, -10deg);
-    margin-top: -200px;
+    padding: 20vw 0;
+    -webkit-transform: skew(0deg, -45deg);
+    transform: skew(0deg, -45deg);
+    width: 100vw;
+    z-index: -1;
+}
+
+.skewed_bg:before {
+    background: #CFCECE;
+    margin-top: -60vh;
+}
+
+.skewed_bg:after {
+    background: #FEFFB6;
+    margin-top: -210vh;
+}
+
+.slider-arrow {
+    width: 100px;
+    height: 100px;
+    background: #DAE1EC;
+    border-radius: 50%;
+}
+
+.arrow-right {
+    right: 0;
+    position: absolute;
+    top: 0;
+    left: auto;
+}
+
+.arrow-left {
+    left: 0;
+    position: absolute;
+    top: 0;
+    right: auto;
+}
+
+.controls {
+    position: absolute;
+    top: 45%;
 }
