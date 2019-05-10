@@ -1,10 +1,6 @@
 window.addEventListener('load', function () {
-    new init;
+    new initSlider;
 });
-
-function init() {
-    initSlider();
-}
 
 function initSlider() {
     drawSlider();
@@ -17,5 +13,13 @@ function drawSlider() {
 }
 
 function loadEventsListeners() {
+    const $leftControl = document.querySelector("[data-click='left']");
+    const $rightControl = document.querySelector("[data-click='right']");
+    $leftControl.addEventListener("click", contolsClick);
+    $rightControl.addEventListener("click", contolsClick);
+}
 
+function contolsClick() {
+    console.log("click on control");
+    this.style.transform = "translateX(450)";
 }

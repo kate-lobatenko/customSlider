@@ -49,7 +49,7 @@ h1 {
     position: relative;
 }
 
-.slider {
+.slider-wrapper {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -65,6 +65,7 @@ h1 {
     -webkit-box-align: center;
     align-items: center;
     position: relative;
+    overflow-x: hidden;
 }
 
 .slide {
@@ -72,10 +73,24 @@ h1 {
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
     padding: 30px 30px 50px 30px;
+    margin-right: 80px;
+}
+
+.slide:nth-child(3) {
+    margin-right: 0;
 }
 
 .slide.active {
     border-left: 10px solid #DB4951;
+}
+
+
+.slide[data-slide-visible="true"] {
+    display: block;
+}
+
+.slide[data-slide-visible="false"] {
+    display: none;
 }
 
 .number {
@@ -108,18 +123,6 @@ h1 {
     overflow: hidden;
 }
 
-.skewed_bg:before,
-.skewed_bg:after {
-    content: "";
-    position: absolute;
-    display: block;
-    background: #00B285;
-    padding: 200px 0;
-    -webkit-transform: skew(0deg, -10deg);
-    transform: skew(0deg, -10deg);
-    margin-top: -200px;
-}
-
 .controls {
     position: absolute;
     display: -webkit-box;
@@ -143,6 +146,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .arrow-right {
@@ -153,13 +157,18 @@ h1 {
 .arrow-right:after,
 .arrow-left:after {
     content: "";
-    color: #000;
+    width: 18px;
+    height: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='32' viewBox='0 0 18 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.1506 31.3287C15.0303 32.2238 16.4567 32.2238 17.3364 31.3287C18.2161 30.4337 18.2161 28.9826 17.3364 28.0876L5.44588 16.0132L17.3364 3.93888C17.7611 3.51031 18 2.92691 18 2.31831C18 1.70972 17.7611 1.12632 17.3364 0.697746C16.9151 0.265642 16.3417 0.0225906 15.7435 0.0225906C15.1453 0.0225906 14.5719 0.265642 14.1506 0.697746L0.689674 14.3927C0.264954 14.8213 0.0260544 15.4046 0.0260544 16.0132C0.0260544 16.6218 0.264954 17.2052 0.689674 17.6338L14.1506 31.3287Z' fill='%231A1A1A'/%3E%3C/svg%3E%0A");
 }
 
 .arrow-right:after {
-    content: ">";
+    transform: rotate(-180deg);
 }
 
-.arrow-left:after {
-    content: "<";
+@media all and (max-width: 1500px) {
+    .wrapper {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
 }
