@@ -6,7 +6,7 @@ body {
 }
 
 body {
-    background: #E5E5E5;
+    background: #F5F5F5;
     color: #111;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -41,7 +41,7 @@ h1 {
 }
 
 .wrapper {
-    max-width: 1440px;
+    max-width: 1200px;
     margin-right: auto;
     margin-left: auto;
     height: 100%;
@@ -65,7 +65,6 @@ h1 {
     -webkit-box-align: center;
     align-items: center;
     position: relative;
-    overflow-x: hidden;
 }
 
 .slide {
@@ -73,13 +72,18 @@ h1 {
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
     padding: 30px 30px 50px 30px;
+    border-left: 10px solid transparent;
     margin-right: 80px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-left 1s linear;
 }
 
 .slide:nth-child(3) {
     margin-right: 0;
 }
 
+.slide:hover,
 .slide.active {
     border-left: 10px solid #DB4951;
 }
@@ -147,10 +151,21 @@ h1 {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color 1s linear;
+}
+
+.arrow-right:hover,
+.arrow-left:hover {
+    background: rgb(107, 111, 117);
+}
+
+
+.arrow-left {
+    margin-left: -4vw;
 }
 
 .arrow-right {
-    right: 0;
+    right: -4vw;
     position: absolute;
 }
 
@@ -164,6 +179,11 @@ h1 {
 
 .arrow-right:after {
     transform: rotate(-180deg);
+}
+
+
+.iframe-wrapper {
+    
 }
 
 @media all and (max-width: 1500px) {
