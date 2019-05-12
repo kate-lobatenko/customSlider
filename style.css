@@ -26,18 +26,22 @@ body {
 
 .skewed_bg:before {
     background: #CFCECE;
-    margin-top: -60vh;
+    margin-top: -30vh;
 }
 
 .skewed_bg:after {
     background: #FEFFB6;
-    margin-top: -210vh;
+    margin-top: -250vh;
+    width: 115vw;
+    height: 50vh;
 }
 
-h1 {
+.wrapper-title {
     font-weight: bold;
     font-size: 48px;
     line-height: normal;
+    padding-bottom: 50px;
+    margin-bottom: 0;
 }
 
 .wrapper {
@@ -58,8 +62,6 @@ h1 {
     flex-wrap: nowrap;
     align-content: center;
     justify-content: space-between;
-    height: auto;
-    max-height: 609px;
     -ms-flex-align: center;
     -webkit-align-items: center;
     -webkit-box-align: center;
@@ -77,6 +79,11 @@ h1 {
     cursor: pointer;
     box-sizing: border-box;
     transition: border-left 1s linear;
+    width: -webkit-calc(100% / 3);
+    width: -moz-calc(100% / 3);
+    width: calc(100% / 3);
+    height: auto;
+    max-height: 609px;
 }
 
 .slide:nth-child(3) {
@@ -125,6 +132,14 @@ h1 {
     max-height: 286px;
     max-width: 286px;
     overflow: hidden;
+    min-height: 286px;
+    vertical-align: middle;
+    display: inline-flex;
+}
+
+.content img {
+    width: 100%;
+    cursor: pointer;
 }
 
 .controls {
@@ -181,9 +196,27 @@ h1 {
     transform: rotate(-180deg);
 }
 
-
 .iframe-wrapper {
-    
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: -40vh;
+    padding: 60px;
+    background: #fff;
+    align-items: center;
+}
+
+.iframe-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+    border-bottom: 2px solid #DB4951;
+}
+
+.iframe-description {
+    margin-left: auto;
 }
 
 @media all and (max-width: 1500px) {
