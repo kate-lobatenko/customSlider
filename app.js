@@ -14,7 +14,20 @@ window.addEventListener('load', function () {
 });
 
 function initSlider() {
+    setAttributes();
     loadEventsListeners();
+}
+
+function setAttributes() {
+    $slides.forEach((slide, i) => {
+        slide.addEventListener("click", slideClick);
+        slide.setAttribute("slide-number", i);
+        if (i < 3) {
+            slide.setAttribute("data-slide-visible", "true");
+        } else {
+            slide.setAttribute("data-slide-visible", "false");
+        }
+    });
 }
 
 function loadEventsListeners() {
@@ -22,16 +35,6 @@ function loadEventsListeners() {
     const $rightControl = document.querySelector("[data-click='right']");
     $leftControl.addEventListener("click", contolsClick);
     $rightControl.addEventListener("click", contolsClick);
-
-    $slides.forEach((slide, i) => {
-        slide.addEventListener("click", slideClick);
-        slide.setAttribute("slide-number", i);
-        if(i < 3) {
-            slide.setAttribute("data-slide-visible","true");
-        } else {
-            slide.setAttribute("data-slide-visible","false");
-        }
-    });
 }
 
 function contolsClick() {
@@ -63,6 +66,6 @@ function slideClick() {
 
         $iframeData.classList.add("active-iframe");
         $iframeData.src = arrSrc[slideNumber];
-        
+
     }
 }
