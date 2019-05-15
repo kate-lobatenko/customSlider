@@ -14,18 +14,24 @@ window.addEventListener('load', function () {
 });
 
 function initSlider() {
-    setAttributes();
+    setAttributes(3);
     loadEventsListeners();
 }
 
-function setAttributes() {
+function setAttributes(slidesQuantity) {
     $slides.forEach((slide, i) => {
         slide.addEventListener("click", slideClick);
         slide.setAttribute("slide-number", i);
-        if (i < 3) {
+        if (i < slidesQuantity) {
             slide.setAttribute("data-slide-visible", "true");
         } else {
             slide.setAttribute("data-slide-visible", "false");
+        }
+        if (i === slidesQuantity - 1) { 
+            slide.classList.add("last-visible-slide");
+        }
+        if (i === 0) { 
+            slide.classList.add("first-visible-slide");
         }
     });
 }
@@ -38,16 +44,20 @@ function loadEventsListeners() {
 }
 
 function contolsClick() {
-    console.log("click on control", this);
+    const firstSlide = document.querySelector(".first-visible-slide");
+    const lastSlide = document.querySelector(".last-visible-slide");
+    const slideNumber = firstSlide.getAttribute("slide-number");
+    console.log(firstSlide);
+    console.log(slideNumber);
     if (this.getAttribute("data-click") === "right") {
         console.log($slides);
-        $slides[0].style.transform = "translateX(400px)";
-        $slides[0].setAttribute("data-slide-visible", "false");
-        $slides[3].setAttribute("data-slide-visible", "true");
+        firstSlide.style.transform = "translateX(-400px)";
+        firstSlide.setAttribute("data-slide-visible", "false");
+        lastSlide.setAttribute("data-slide-visible", "true");
     } else {
         console.log($slides);
-        $slides[0].style.transform = "translateX(-400px)";
-        $slides[0].setAttribute("data-slide-visible", "false");
+        firstSlide.style.transform = "translateX(-400px)";
+        firstSlide.setAttribute("data-slide-visible", "false");
     }
 }
 
