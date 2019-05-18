@@ -100,10 +100,6 @@ body {
     display: none;
 }
 
-.slide[data-slide-visible="true"] :last-of-type {
-    margin-right: 0;
-}
-
 .number {
     font-weight: bold;
     font-size: 48px;
@@ -233,6 +229,14 @@ body {
     right: 0;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
+    opacity: 0;
+    -webkit-transition: all 1s ease-out;
+    -moz-transition: all 1s ease-out; 
+    transition: all 1s ease-out;
+}
+
+#iframe-data.active-iframe {
+    opacity: 1;
 }
 
 .active-iframe {

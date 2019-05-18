@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
 });
 
 function initSlider() {
-    setAttributes(3);
+    setAttributes(3); // set amount of visible slides
     loadEventsListeners();
 }
 
@@ -27,10 +27,10 @@ function setAttributes(slidesQuantity) {
         } else {
             slide.setAttribute("data-slide-visible", "false");
         }
-        if (i === slidesQuantity - 1) { 
+        if (i === slidesQuantity - 1) {
             slide.classList.add("last-visible-slide");
         }
-        if (i === 0) { 
+        if (i === 0) {
             slide.classList.add("first-visible-slide");
         }
     });
@@ -65,17 +65,17 @@ function slideClick() {
     const currentSlide = this;
     const slideNumber = currentSlide.getAttribute("slide-number");
 
-    if (currentSlide.getAttribute("data-slide-active") !== "true") {
-        $slides.forEach(slide => {
-            slide.setAttribute("data-slide-active", "false");
-            slide.classList.remove("active-slide");
-        });
+    $iframeData.classList.remove("active-iframe");
 
-        currentSlide.setAttribute("data-slide-active", "true");
-        currentSlide.classList.add("active-slide");
+    $slides.forEach(slide => {
+        slide.setAttribute("data-slide-active", "false");
+        slide.classList.remove("active-slide");
+    });
 
-        $iframeData.classList.add("active-iframe");
-        $iframeData.src = arrSrc[slideNumber];
+    currentSlide.setAttribute("data-slide-active", "true");
+    currentSlide.classList.add("active-slide");
 
-    }
+    $iframeData.src = arrSrc[slideNumber];
+    setTimeout(() => $iframeData.classList.add("active-iframe"), 500);
+
 }
