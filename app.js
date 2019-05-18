@@ -1,6 +1,8 @@
 const $slides = document.querySelectorAll("[data-slide='slide']");
 const $slider = document.querySelector("slider");
 const $iframeData = document.getElementById("iframe-data");
+const $leftControl = document.querySelector("[data-click='left']");
+const $rightControl = document.querySelector("[data-click='right']");
 
 const arrSrc = [
     "https://kate-lobatenko.github.io/puzzle15/",
@@ -37,27 +39,28 @@ function setAttributes(slidesQuantity) {
 }
 
 function loadEventsListeners() {
-    const $leftControl = document.querySelector("[data-click='left']");
-    const $rightControl = document.querySelector("[data-click='right']");
+
     $leftControl.addEventListener("click", contolsClick);
     $rightControl.addEventListener("click", contolsClick);
 }
 
 function contolsClick() {
-    const firstSlide = document.querySelector(".first-visible-slide");
-    const lastSlide = document.querySelector(".last-visible-slide");
-    const slideNumber = firstSlide.getAttribute("slide-number");
-    console.log(firstSlide);
+    const $firstSlide = document.querySelector(".first-visible-slide");
+    const $lastSlide = document.querySelector(".last-visible-slide");
+    const slideNumber = $firstSlide.getAttribute("slide-number");
+    console.log($firstSlide);
     console.log(slideNumber);
+    console.log($slides);
+
     if (this.getAttribute("data-click") === "right") {
         console.log($slides);
-        firstSlide.style.transform = "translateX(-400px)";
-        firstSlide.setAttribute("data-slide-visible", "false");
-        lastSlide.setAttribute("data-slide-visible", "true");
+        // $firstSlide.style.transform = "translateX(-400px)";
+        // $firstSlide.setAttribute("data-slide-visible", "false");
+        // $lastSlide.setAttribute("data-slide-visible", "true");
     } else {
         console.log($slides);
-        firstSlide.style.transform = "translateX(-400px)";
-        firstSlide.setAttribute("data-slide-visible", "false");
+        // $firstSlide.style.transform = "translateX(-400px)";
+        // $firstSlide.setAttribute("data-slide-visible", "false");
     }
 }
 

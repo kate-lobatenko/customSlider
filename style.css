@@ -96,6 +96,7 @@ body {
     display: block;
 }
 
+span[data-visible="false"],
 .slide[data-slide-visible="false"] {
     display: none;
 }
