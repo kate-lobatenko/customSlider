@@ -11,12 +11,14 @@ const arrSrc = [
     "https://kate-lobatenko.github.io/MODUSversus/",
 ];
 
+const visibleSlides = [];
+
 window.addEventListener('load', function () {
     new initSlider;
 });
 
 function initSlider() {
-    setAttributes(3); // set amount of visible slides
+    setAttributes(3); // set amount of visible slides and settings for them
     loadEventsListeners();
 }
 
@@ -24,8 +26,10 @@ function setAttributes(slidesQuantity) {
     $slides.forEach((slide, i) => {
         slide.addEventListener("click", slideClick);
         slide.setAttribute("slide-number", i);
+        
         if (i < slidesQuantity) {
-            slide.setAttribute("data-slide-visible", "true");
+            slide.setAttribute("data-slide-visible", "true");    
+            visibleSlides.push(i);        
         } else {
             slide.setAttribute("data-slide-visible", "false");
         }
@@ -39,28 +43,72 @@ function setAttributes(slidesQuantity) {
 }
 
 function loadEventsListeners() {
-
     $leftControl.addEventListener("click", contolsClick);
     $rightControl.addEventListener("click", contolsClick);
 }
 
 function contolsClick() {
-    const $firstSlide = document.querySelector(".first-visible-slide");
-    const $lastSlide = document.querySelector(".last-visible-slide");
-    const slideNumber = $firstSlide.getAttribute("slide-number");
-    console.log($firstSlide);
-    console.log(slideNumber);
-    console.log($slides);
+    let $firstSlide = document.querySelector(".first-visible-slide");
+    let $lastSlide = document.querySelector(".last-visible-slide");
+    let slideFirstNumber = $firstSlide.getAttribute("slide-number");
+    let slideLastNumber = $lastSlide.getAttribute("slide-number");
+    let slidePrevFirst = Number(slideFirstNumber) - 1;
+    let slideNextFirst = Number(slideFirstNumber) + 1;
+    let slideNextLast = Number(slideLastNumber) + 1;
+    console.log("contolsClick:",visibleSlides);
+
+    if($slides[slidePrevFirst] === "undefined" || $slides[slidePrevFirst] == null) {
+        $leftControl.setAttribute("data-visible", "false");
+    }
+
+    if($slides[slideNextLast] === "undefined" || $slides[slideNextLast] == null) {
+        $rightControl.setAttribute("data-visible", "false");
+    }
 
     if (this.getAttribute("data-click") === "right") {
-        console.log($slides);
-        // $firstSlide.style.transform = "translateX(-400px)";
-        // $firstSlide.setAttribute("data-slide-visible", "false");
-        // $lastSlide.setAttribute("data-slide-visible", "true");
-    } else {
-        console.log($slides);
-        // $firstSlide.style.transform = "translateX(-400px)";
-        // $firstSlide.setAttribute("data-slide-visible", "false");
+        if ($leftControl.getAttribute("data-visible") !== "true") {
+            $leftControl.setAttribute("data-visible", "true");
+        }
+
+        // $lastSlide.classList.remove("last-visible-slide");
+        $lastSlide = $slides[slideNextLast];
+        
+        $firstSlide = $slides[slideNextFirst];
+        // $firstSlide.classList.remove("first-visible-slide");
+
+        // $lastSlide.classList.add("last-visible-slide");
+        // $firstSlide.classList.add("first-visible-slide");
+
+        visibleSlides.push(slideNextLast);
+        visibleSlides.shift();
+
+        // $slides.forEach((slide, i) => {
+        //     slide.setAttribute("data-slide-visible", "true");
+        // });
+
+        $firstSlide.setAttribute("data-slide-visible", "false");
+        console.log("visibleSlides after right click:", visibleSlides);
+
+    } else if (this.getAttribute("data-click") === "left"){
+        // $lastSlide.classList.remove("last-visible-slide");
+        $lastSlide = $slides[slidePrevFirst];
+        $lastSlide.setAttribute("data-slide-visible", "true");
+
+        // $firstSlide.classList.remove("first-visible-slide");
+        $firstSlide = $slides[slidePrevFirst];
+
+        // $lastSlide.classList.add("last-visible-slide");
+        // $firstSlide.classList.add("first-visible-slide");
+
+        visibleSlides.shift();
+        visibleSlides.unshift(slidePrevFirst);
+        
+        // visibleSlides.forEach((slide) => {
+        //     slide.setAttribute("data-slide-visible", "true");
+        // });
+
+        $firstSlide.setAttribute("data-slide-visible", "false");
+        console.log("visibleSlides after left click:", visibleSlides);
     }
 }
 
