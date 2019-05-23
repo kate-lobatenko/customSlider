@@ -27,18 +27,18 @@ function setAttributes(slidesQuantity) {
         slide.addEventListener("click", slideClick);
         slide.setAttribute("slide-number", i);
         
-        if (i < slidesQuantity) {
-            slide.setAttribute("data-slide-visible", "true");    
-            visibleSlides.push(i);        
-        } else {
-            slide.setAttribute("data-slide-visible", "false");
-        }
-        if (i === slidesQuantity - 1) {
-            slide.classList.add("last-visible-slide");
-        }
-        if (i === 0) {
-            slide.classList.add("first-visible-slide");
-        }
+        // if (i < slidesQuantity) {
+        //     slide.setAttribute("data-slide-visible", "true");    
+        //     visibleSlides.push(i);        
+        // } else {
+        //     slide.setAttribute("data-slide-visible", "false");
+        // }
+        // if (i === slidesQuantity - 1) {
+        //     slide.classList.add("last-visible-slide");
+        // }
+        // if (i === 0) {
+        //     slide.classList.add("first-visible-slide");
+        // }
     });
 }
 
@@ -48,68 +48,70 @@ function loadEventsListeners() {
 }
 
 function contolsClick() {
-    let $firstSlide = document.querySelector(".first-visible-slide");
-    let $lastSlide = document.querySelector(".last-visible-slide");
-    let slideFirstNumber = $firstSlide.getAttribute("slide-number");
-    let slideLastNumber = $lastSlide.getAttribute("slide-number");
-    let slidePrevFirst = Number(slideFirstNumber) - 1;
-    let slideNextFirst = Number(slideFirstNumber) + 1;
-    let slideNextLast = Number(slideLastNumber) + 1;
-    console.log("contolsClick:",visibleSlides);
+    // let $firstSlide = document.querySelector(".first-visible-slide");
+    // let $lastSlide = document.querySelector(".last-visible-slide");
+    // let slideFirstNumber = $firstSlide.getAttribute("slide-number");
+    // let slideLastNumber = $lastSlide.getAttribute("slide-number");
+    // let slidePrevFirst = Number(slideFirstNumber) - 1;
+    // let slideNextFirst = Number(slideFirstNumber) + 1;
+    // let slideNextLast = Number(slideLastNumber) + 1;
+    // let slidePrevLast = Number(slideLastNumber) - 1;
+    // console.log("contolsClick, visibleSlides array =",visibleSlides);
 
-    if($slides[slidePrevFirst] === "undefined" || $slides[slidePrevFirst] == null) {
-        $leftControl.setAttribute("data-visible", "false");
-    }
+    // if($slides[slidePrevFirst] === "undefined" || $slides[slidePrevFirst] == null) {
+    //     $leftControl.setAttribute("data-visible", "false");
+    // }
 
-    if($slides[slideNextLast] === "undefined" || $slides[slideNextLast] == null) {
-        $rightControl.setAttribute("data-visible", "false");
-    }
+    // if($slides[slideNextLast] === "undefined" || $slides[slideNextLast] == null) {
+    //     $rightControl.setAttribute("data-visible", "false");
+    // }
 
-    if (this.getAttribute("data-click") === "right") {
-        if ($leftControl.getAttribute("data-visible") !== "true") {
-            $leftControl.setAttribute("data-visible", "true");
-        }
+    // if (this.getAttribute("data-click") === "right") {
+    //     if ($leftControl.getAttribute("data-visible") !== "true") {
+    //         $leftControl.setAttribute("data-visible", "true");
+    //     }
+    // }
 
-        // $lastSlide.classList.remove("last-visible-slide");
-        $lastSlide = $slides[slideNextLast];
+    //     $lastSlide.classList.remove("last-visible-slide");
+    //     $lastSlide = $slides[slideNextLast];
         
-        $firstSlide = $slides[slideNextFirst];
-        // $firstSlide.classList.remove("first-visible-slide");
+    //     $firstSlide = $slides[slideNextFirst];
+    //     $firstSlide.classList.remove("first-visible-slide");
 
-        // $lastSlide.classList.add("last-visible-slide");
-        // $firstSlide.classList.add("first-visible-slide");
+    //     $lastSlide.classList.add("last-visible-slide");
+    //     $firstSlide.classList.add("first-visible-slide");
 
-        visibleSlides.push(slideNextLast);
-        visibleSlides.shift();
+    //     visibleSlides.push(slideNextLast);
+    //     visibleSlides.shift();
 
-        // $slides.forEach((slide, i) => {
-        //     slide.setAttribute("data-slide-visible", "true");
-        // });
+    //     $slides.forEach((slide, i) => {
+    //         slide.setAttribute("data-slide-visible", "true");
+    //     });
 
-        $firstSlide.setAttribute("data-slide-visible", "false");
-        console.log("visibleSlides after right click:", visibleSlides);
+    //     $firstSlide.setAttribute("data-slide-visible", "false");
+    //     console.log("visibleSlides after right click:", visibleSlides);
 
-    } else if (this.getAttribute("data-click") === "left"){
-        // $lastSlide.classList.remove("last-visible-slide");
-        $lastSlide = $slides[slidePrevFirst];
-        $lastSlide.setAttribute("data-slide-visible", "true");
+    // } else if (this.getAttribute("data-click") === "left"){
+    //     $lastSlide.classList.remove("last-visible-slide");
+    //     $lastSlide = $slides[slidePrevFirst];
+    //     $lastSlide.setAttribute("data-slide-visible", "true");
 
-        // $firstSlide.classList.remove("first-visible-slide");
-        $firstSlide = $slides[slidePrevFirst];
+    //     $firstSlide.classList.remove("first-visible-slide");
+    //     $firstSlide = $slides[slidePrevFirst];
 
-        // $lastSlide.classList.add("last-visible-slide");
-        // $firstSlide.classList.add("first-visible-slide");
+    //     $lastSlide.classList.add("last-visible-slide");
+    //     $firstSlide.classList.add("first-visible-slide");
 
-        visibleSlides.shift();
-        visibleSlides.unshift(slidePrevFirst);
+    //     visibleSlides.shift();
+    //     visibleSlides.unshift(slidePrevFirst);
         
-        // visibleSlides.forEach((slide) => {
-        //     slide.setAttribute("data-slide-visible", "true");
-        // });
+    //     visibleSlides.forEach((slide) => {
+    //         slide.setAttribute("data-slide-visible", "true");
+    //     });
 
-        $firstSlide.setAttribute("data-slide-visible", "false");
-        console.log("visibleSlides after left click:", visibleSlides);
-    }
+    //     $firstSlide.setAttribute("data-slide-visible", "false");
+    //     console.log("visibleSlides after left click:", visibleSlides);
+    // }
 }
 
 function slideClick() {
@@ -128,5 +130,4 @@ function slideClick() {
 
     $iframeData.src = arrSrc[slideNumber];
     setTimeout(() => $iframeData.classList.add("active-iframe"), 500);
-
 }
