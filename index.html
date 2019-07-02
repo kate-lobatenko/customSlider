@@ -13,9 +13,9 @@
 <body class="skewed_bg">
   <div class="wrapper">
     <h1 class="wrapper-title">Portfolio</h1>
-    <div class="slider">
+    <div class="slider" data-slider="slider">
       <div class="slider-wrapper">
-        <div class="slide active" data-slide-visible="true">
+        <div class="slide" data-slide="slide">
           <div class="number_wrap">
             <span class="number">01</span>
           </div>
@@ -32,7 +32,7 @@
             </p>
           </div>
         </div>
-        <div class="slide" data-slide-visible="true">
+        <div class="slide" data-slide="slide">
           <div class="number_wrap">
             <span class="number">02</span>
           </div>
@@ -48,7 +48,7 @@
             </p>
           </div>
         </div>
-        <div class="slide" data-slide-visible="true">
+        <div class="slide" data-slide="slide">
           <div class="number_wrap">
             <span class="number">03</span>
           </div>
@@ -64,7 +64,7 @@
               to create some path and find exit by clicking on the button "Find path".</p>
           </div>
         </div>
-        <div class="slide" data-slide-visible="false">
+        <div class="slide" data-slide="slide">
           <div class="number_wrap">
             <span class="number">04</span>
           </div>
@@ -79,18 +79,19 @@
               you can check responsive version.</p>
           </div>
         </div>
-        <div class="controls">
-          <span class="arrow-left" data-click="left"></span>
-          <span class="arrow-right" data-click="right"></span>
-        </div>
-
-        <div class="iframe-wrapper">
-          <h2 class="iframe-title">Projects</h2>
-          <p class="iframe-description">
-            Here you can observe some examples of work. <br/> Please click on tab with image and you will see real version in the iframe above.
-          </p>
-        </div>
       </div>
+      <div class="controls">
+        <span class="arrow-left" data-click="left" data-visible="false"></span>
+        <span class="arrow-right" data-click="right"></span>
+      </div>
+    </div>
+    <div class="iframe-wrapper">
+      <h2 class="iframe-title">Projects</h2>
+      <p class="iframe-description">
+        Here you can observe some examples of work. <br /> Please click on tab with image and you will see real
+        version in the iframe above.
+      </p>
+      <iframe id="iframe-data"></iframe>
     </div>
   </div>
 </body>
